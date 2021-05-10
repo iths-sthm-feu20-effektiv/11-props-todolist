@@ -10,6 +10,14 @@ const TodoList = () => {
 		{ id: 3, title: 'Study more', isDone: false }
 	])
 
+	const addTodoItem = title => {
+		// todoList.push  <- fungerar inte i React
+		setTodoList( [
+			...todoList,
+			{ id: todoList.length + 1, title, isDone: false }
+		] )
+	}
+
 	const markAsDone = id => {
 		// todoList[0].isDone = true  <- fungerar inte i React
 		setTodoList(todoList.map(todoItem => {
@@ -35,7 +43,7 @@ const TodoList = () => {
 			<ul>
 				{jsxList}
 			</ul>
-			<AddTodo />
+			<AddTodo addTodoItem={addTodoItem} />
 		</div>
 	)
 }
